@@ -1,0 +1,47 @@
+.header {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateY(40px);
+  transition: 0.5s;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+
+  &.active {
+    transform: translateY(0px);
+    backdrop-filter: blur(12px);
+    background: rgba(3, 9, 23, 0.01);
+    padding: 10px 0;
+    border-top: 1px solid #12192B;
+    border-bottom: 1px solid #12192B;
+    z-index: 100;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+    align-items: center;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 24px;
+
+    li {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 17px;
+      color: #ffffff;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}

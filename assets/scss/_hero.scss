@@ -1,0 +1,212 @@
+#hero {
+  padding-top: 12.625rem;
+  position: relative;
+  overflow: hidden;
+  height: calc(100vh - 12.625rem);
+  padding-bottom: 5rem;
+  .scroll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 100px;
+    h6 {
+      text-transform: uppercase;
+      font-family: "Outfit", sans-serif;
+      color: #fff;
+      margin-top: 8px;
+    }
+  }
+  .absolute {
+    position: absolute;
+    z-index: -1;
+  }
+  .hero__text {
+    max-width: 33.875rem;
+
+    a {
+      font-family: "Outfit";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.4375rem;
+      color: #1d1d1d;
+
+      width: 11.8125rem;
+      height: 3rem;
+
+      background: linear-gradient(90deg, #79f1e8 0%, #00619b 144.21%);
+      border-radius: 4px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: 0.3s;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    p {
+      font-family: "Outfit";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 1.125rem;
+      line-height: 1.4375rem;
+      color: #ffffff;
+      margin-top: 1.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .hero__tag {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 0.625rem;
+    color: #1d1d1d;
+    background: linear-gradient(90deg, #79f1e8 0%, #00619b 144.21%);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    max-width: max-content;
+  }
+  h1 {
+    margin-top: 2.5rem;
+    font-family: "Inter", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+
+    color: #ffffff;
+
+    strong {
+      background: linear-gradient(90deg, #79f1e8 0%, #02639c 73.52%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+  }
+}
+
+#label3--inject-1,
+#label2--inject-1,
+#label1--inject-1,
+#label4--inject-1,
+#label5--inject-1,
+#label6--inject-1,
+#label7--inject-1,
+#label8--inject-1,
+#label9--inject-1 {
+  animation: opacityLabels 3s linear infinite;
+}
+
+#blue_line1--inject-1,
+#colchete2--inject-1,
+#colchete1--inject-1,
+#blue_line2--inject-1 {
+  animation: moveForFront 3s linear infinite;
+}
+
+.hero__line {
+  animation: line1 4s ease 0s infinite;
+  opacity: 0;
+  top: 50%;
+}
+
+.hero__line2 {
+  animation: line2 4s ease 1s infinite;
+  opacity: 0;
+  left: 50%;
+}
+
+@keyframes line1 {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translate3d(-1800px, 0, 0);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(-1800px, 0, 0);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(100vw, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes line2 {
+  0%,
+  45% {
+    opacity: 0;
+    transform: translate3d(0, 1500px, 0);
+  }
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 1500px, 0);
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, -1500px, 0);
+    opacity: 0;
+  }
+}
+#scroll--inject-22--inject-2 {
+  animation: icon-scroll 2s linear infinite;
+  stroke-dasharray: 10 50;
+}
+@keyframes moveForFront {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+@keyframes opacityLabels {
+  0% {
+    opacity: 0.01;
+  }
+  50% {
+    opacity: 0.15;
+  }
+  100% {
+    opacity: 0.01;
+  }
+}
+
+@keyframes icon-scroll {
+  0%,
+  5% {
+    stroke-dashoffset: 20;
+  }
+  95%,
+  100% {
+    stroke-dashoffset: -20;
+  }
+}
+
+@media(max-width: 1600px){
+  #hero .scroll{
+    margin-top: -50px;
+  }
+}

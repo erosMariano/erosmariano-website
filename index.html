@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Bem-vindo ao site de um programador front end apaixonado por tecnologia e design. Aqui você encontrará informações sobre meus serviços de desenvolvimento web, além de dicas e recursos sobre HTML, CSS, JavaScript e outras tecnologias essenciais para criar sites modernos e responsivos. Entre em contato para discutir seus projetos e transforme suas ideias em realidade na web!"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo.svg"
+      type="image/svg"
+    />
+    <title>Eros Mariano - Desenvolvedor Front-End</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="./assets/scss/main.css" />
+    <script src="./assets/js/svg-inject.js"></script>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <div class="container">
+          <img src="./assets/images/logo.svg" alt="" />
+          <nav>
+            <ul>
+              <li><a href="">Sobre</a></li>
+              <li><a href="">Habilidades</a></li>
+              <li><a href="">Projetos</a></li>
+              <li><a href="">Contato</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+      <section id="hero">
+        <div class="container">
+          <div class="hero__text">
+            <div data-aos="fade-up" data-aos-duration="1000">
+              <span class="hero__tag"> Front-End Developer </span>
+            </div>
+            <h1 data-aos="fade-up" data-aos-duration="1000" data-aos-delay="50">
+              Criando interfaces e <strong>experiências incríveis</strong> para
+              os usuários!
+            </h1>
+            <p data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+              De HTML e CSS a JavaScript e frameworks populares
+            </p>
+
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1000"
+              data-aos-delay="150"
+            >
+              <a href="">Entre em contato</a>
+            </div>
+          </div>
+
+          <div
+            class="hero__image"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay="150"
+          >
+            <img
+              src="./assets/images/hero__image.svg"
+              onload="SVGInject(this)"
+            />
+          </div>
+        </div>
+
+        <div class="scroll">
+          <img src="./assets/images/mouse.svg" onload="SVGInject(this)" />
+          <h6>Role para baixo</h6>
+        </div>
+        <img
+          src="./assets/images/hero__line.svg"
+          class="absolute hero__line"
+          onload="SVGInject(this)"
+        />
+        <img
+          src="./assets/images/hero__line2.svg"
+          class="absolute hero__line2"
+          onload="SVGInject(this)"
+        />
+      </section>
+
+      <section id="sobre">
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur2"
+          onload="SVGInject(this)"
+        />
+
+        <div class="container">
+          <div class="tag">Sobre</div>
+
+          <div class="sobreMim__container">
+            <img
+              src="./assets/images/sobreMim__image.png"
+              alt=""
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            />
+
+            <div
+              class="sobreMim__text"
+              data-aos="fade-up"
+              data-aos-duration="1000"
+            >
+              <h2>Olá eu me chamo <strong>Eros Mariano!</strong></h2>
+              <p>
+                Iniciei na programação em 2018 através da ONG
+                <a href="#">passos mágicos</a> que me trouxe a possibilidade de
+                fazer um curso pró profissão em tecnologia na Politécnica da USP
+                e em uma das matérias me apaixonei pelo desenvolvimento WEB
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <img
+        src="./assets/images/blur.svg"
+        class="absolute blur1"
+        onload="SVGInject(this)"
+      />
+    </main>
+
+    <script src="./assets/js/header.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+  </body>
+</html>

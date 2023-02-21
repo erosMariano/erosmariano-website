@@ -1,0 +1,18 @@
+<svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame">
+<g id="icon-mouse--inject-22">
+<path id="Rectangle 2039--inject-22" d="M43 20C43 11.7157 36.2843 5 28 5C19.7157 5 13 11.7157 13 20V35C13 43.2843 19.7157 50 28 50C36.2843 50 43 43.2843 43 35V20Z" stroke="url(#paint0_linear_31_85)" stroke-width="2"/>
+<path id="scroll--inject-22" d="M28 13V25" stroke="url(#paint1_linear_31_85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_31_85" x1="42.1449" y1="0.594203" x2="-0.362573" y2="37.8383" gradientUnits="userSpaceOnUse">
+<stop stop-color="#79F1E8"/>
+<stop offset="1" stop-color="#00619B"/>
+</linearGradient>
+<linearGradient id="paint1_linear_31_85" x1="-nan" y1="-nan" x2="-nan" y2="-nan" gradientUnits="userSpaceOnUse">
+<stop stop-color="#64D8DB"/>
+<stop offset="1" stop-color="#1141BD"/>
+</linearGradient>
+</defs>
+</svg>

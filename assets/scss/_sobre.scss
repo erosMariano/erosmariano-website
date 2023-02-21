@@ -1,0 +1,61 @@
+#sobre {
+  position: relative;
+
+  .blur2 {
+    left: -31.25rem;
+    top: -16.25rem;
+  }
+  padding: 5rem 0;
+  .tag {
+    @include tagSection();
+  }
+
+  .sobreMim__container {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .sobreMim__text {
+    max-width: 30rem;
+    background: rgba(255, 255, 255, 0.19);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(2px);
+    border-radius: 8px;
+    padding: 1.5rem;
+    height: max-content;
+    h2 {
+      font-family: "Outfit", sans-serif;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 2.5rem;
+      color: #ffffff;
+      margin-bottom: 1.75rem;
+
+      strong {
+        font-weight: 700;
+        background: linear-gradient(90deg, #78f0e8 46.95%, #278fb4 82.53%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-fill-color: transparent;
+      }
+    }
+
+    p {
+      font-family: "Outfit", sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: 1.125rem;
+      line-height: 30px;
+      color: #ffffff;
+
+      a{
+        color: #79F1E8;
+      }
+    }
+  }
+}
