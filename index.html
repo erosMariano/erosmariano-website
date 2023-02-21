@@ -78,7 +78,9 @@
           </div>
         </div>
 
-        <div class="scroll">
+        <div
+          class="scroll"
+        >
           <img src="./assets/images/mouse.svg" onload="SVGInject(this)" />
           <h6>Role para baixo</h6>
         </div>
@@ -129,6 +131,150 @@
         </div>
       </section>
 
+      <section id="habilidades">
+        <div class="container">
+          <div class="tag">Habilidades</div>
+
+          <div class="habilidades__container">
+            <div class="habilidades__cards">
+              <div class="card active">
+                <div>
+                  <h2>HTML, CSS e JavaScript</h2>
+                  <p>As bases do desenvolvimento web</p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__wifi.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+
+              <div class="card">
+                <div>
+                  <h2>ReactJS & NextJs</h2>
+                  <p>Um desenvolvimento web cada vez mais fluído</p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__react.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+
+              <div class="card">
+                <div>
+                  <h2>Wordpress</h2>
+                  <p>
+                    Um CMS que alimenta mais de 35% de todos os sites da
+                    internet
+                  </p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__wordpress.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+            </div>
+
+            <p class="description active">
+              HTML é a base da criação de páginas web e permite a criação de estruturas e conteúdos.
+            </p>
+
+            <p class="description active">
+              React é uma biblioteca de JavaScript para construir interfaces de usuário, e o Next é um framework que usa o React para criar aplicativos web escaláveis.
+            </p>
+            
+            <p class="description active">
+              WordPress é uma plataforma popular para criação de sites, com recursos intuitivos de gerenciamento de conteúdo.
+            </p>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="projetos">
+        <div class="container">
+          <div class="tag">Projetos</div>
+
+          <div class="projetos__container">
+            <div class="options">
+              <div
+                class="option active"
+                style="--optionBackground: url(../images/adversoLab.png)"
+              >
+                <div class="label">
+                  <div class="icon">
+                    <img
+                      src="./assets/images/projetos__iconAdverso.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <a href="https://adversolab.com/" class="info">
+                    <div class="main">Projeto Adverso Lab - HTML, CSS e Js</div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="option"
+                style="--optionBackground: url(../images/hent.png)"
+              >
+                <div class="label">
+                  <div class="icon">
+                    <img
+                      src="./assets/images/hent_icon.png"
+                      alt=""
+                    />
+                  </div>
+
+                  <a href="https://www.hent.com.br/" class="info">
+                    <div class="main">Projeto Hent - NextJs & Styled Components</div>
+                  </a>
+                </div>
+              </div>
+              <div
+                class="option"
+                style="--optionBackground: url(../images/nft.png)"
+              >
+                <div class="label">
+                  <div class="icon">
+                    <img
+                      src="./assets/images/nft_icon.png"
+                      alt=""
+                    />
+                  </div>
+
+                  <a
+                    href="https://github.com/erosMariano/NFT-with-nextjs"
+                    class="info"
+                  >
+                    <div class="main">E-commerce NFT - NextJs com Sanity.io de CMS</div>
+                  </a>
+                </div>
+              </div>
+
+              <div
+                class="option"
+                style="--optionBackground: url(../images/lastlink.png)"
+              >
+                <div class="label">
+                  <div class="icon">
+                    <img
+                      src="./assets/images/projetos__iconAdverso.svg"
+                      alt=""
+                    />
+                  </div>
+
+                  <a href="https://lastlink.com/" class="info">
+                    <div class="main">Projeto Adverso Lab</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
       <img
         src="./assets/images/blur.svg"
         class="absolute blur1"
@@ -137,6 +283,9 @@
     </main>
 
     <script src="./assets/js/header.js"></script>
+    <script src="./assets/js/habilidades.js"></script>
+    <script src="./assets/js/projetos.js"></script>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();

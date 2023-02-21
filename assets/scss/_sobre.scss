@@ -1,11 +1,10 @@
 #sobre {
   position: relative;
-
+  padding: 5rem 0;
   .blur2 {
     left: -31.25rem;
     top: -16.25rem;
   }
-  padding: 5rem 0;
   .tag {
     @include tagSection();
   }

@@ -1,0 +1,95 @@
+#projetos {
+  padding: 5rem 0;
+  .tag {
+    @include tagSection();
+  }
+  .options {
+    margin-top: 3.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    overflow: hidden;
+    height: 400px;
+    gap: 10px;
+  }
+
+  .option {
+    border: 2px solid #79f1e8;
+    position: relative;
+    overflow: hidden;
+    width: 75px;
+    background-image: var(--optionBackground);
+    background-size: auto 120%;
+    background-position: center;
+    cursor: pointer;
+    transition: 0.5s cubic-bezier(0.05, 0.61, 0.41, 0.95);
+  }
+
+  .option.active {
+    border-radius: 10px;
+    width: 100%;
+    background-position: bottom;
+  }
+
+  .option:not(.active) {
+    width: 75px;
+    border-radius: 10px;
+    border: 2px solid #79f1e8;
+  }
+
+  .label {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+
+    background: linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.34) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    border-radius: 0px 0px 10px 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 13px 24px;
+
+    .icon {
+      margin-left: -6px;
+    }
+    .main {
+      position: absolute;
+      width: max-content;
+      top: -10px;
+      left: -6px;
+    }
+
+    a {
+      font-family: "Outfit", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      color: #ffffff;
+      text-decoration: none;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        transition: 0.3s;
+        content: "";
+        width: 0%;
+        height: 1px;
+        left: 0;
+        bottom: -3px;
+        display: block;
+        background: linear-gradient(90deg, #79f1e8 0%, #00619b 144.21%);
+      }
+
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
+}
