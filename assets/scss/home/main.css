@@ -1090,4 +1090,9 @@ main .blur1 {
   main {
     contain: paint;
   }
+}
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 0px;
+  }
 }/*# sourceMappingURL=main.css.map */
