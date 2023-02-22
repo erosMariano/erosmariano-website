@@ -64,6 +64,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 16px;
   }
   .hero__tag {
     font-family: "Inter";
@@ -205,8 +206,59 @@
   }
 }
 
-@media(min-width: 1600px){
-  #hero .scroll{
+@media (min-width: 1600px) {
+  #hero .scroll {
     margin-top: 0px;
+  }
+}
+
+body,
+html {
+  overflow-x: hidden;
+}
+#sobre,
+#habilidades,
+#projetos,
+#contato {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  #hero .container {
+    flex-direction: column;
+    .hero__text {
+      max-width: 100%;
+      text-align: center;
+
+      a {
+        margin: 0 auto;
+      }
+    }
+  }
+  .hero__image {
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: block;
+    width: 300px;
+    svg {
+      width: 100%;
+    }
+  }
+
+  #hero .scroll {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  #hero .scroll {
+    display: flex;
+    margin-top: 50px;
+  }
+  .hero__image {
+    display: none;
+  }
+  #hero {
+    padding-top: 5.625rem;
   }
 }

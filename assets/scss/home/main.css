@@ -237,6 +237,14 @@ main .blur1 {
   width: 100%;
 }
 
+@media (max-width: 600px) {
+  .header img {
+    width: 30px;
+  }
+  .header nav {
+    display: none;
+  }
+}
 #hero {
   padding-top: 12.625rem;
   position: relative;
@@ -298,6 +306,7 @@ main .blur1 {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 16px;
 }
 #hero .hero__tag {
   font-family: "Inter";
@@ -432,6 +441,54 @@ main .blur1 {
 @media (min-width: 1600px) {
   #hero .scroll {
     margin-top: 0px;
+  }
+}
+body,
+html {
+  overflow-x: hidden;
+}
+
+#sobre,
+#habilidades,
+#projetos,
+#contato {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  #hero .container {
+    flex-direction: column;
+  }
+  #hero .container .hero__text {
+    max-width: 100%;
+    text-align: center;
+  }
+  #hero .container .hero__text a {
+    margin: 0 auto;
+  }
+  .hero__image {
+    margin: 0 auto;
+    margin-top: 1rem;
+    display: block;
+    width: 300px;
+  }
+  .hero__image svg {
+    width: 100%;
+  }
+  #hero .scroll {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  #hero .scroll {
+    display: flex;
+    margin-top: 50px;
+  }
+  .hero__image {
+    display: none;
+  }
+  #hero {
+    padding-top: 5.625rem;
   }
 }
 #sobre {
@@ -916,4 +973,10 @@ main .blur1 {
   line-height: 1.25rem;
   color: rgba(255, 255, 255, 0.5);
   text-align: center;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 0 16px;
+  }
 }/*# sourceMappingURL=main.css.map */

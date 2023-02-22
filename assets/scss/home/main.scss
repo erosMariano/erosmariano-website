@@ -177,3 +177,10 @@ main {
 @import "./projetos";
 @import "./contato";
 @import "./footer";
+
+
+@media(max-width: 600px){
+  .container{
+    padding: 0 16px;
+  }
+}
