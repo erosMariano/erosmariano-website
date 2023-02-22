@@ -3,8 +3,9 @@
   display: block;
   height: 200vh;
   position: relative;
+
   .blur3 {
-    left: -31.25rem;
+    right: -30rem;
     top: -25rem;
   }
 
@@ -104,5 +105,53 @@
         color: #79f1e8;
       }
     }
+  }
+}
+
+
+#habilidades .habilidades__cards.mobile {
+  display: none;
+}
+@media (max-width: 1046px) {
+  #habilidades {
+    height: auto;
+    padding-top: 2.5rem;
+  }
+  #habilidades .habilidades__cards.desktop {
+    display: none;
+  }
+
+  #habilidades .habilidades__cards.mobile {
+    display: flex;
+  }
+  #habilidades .habilidades__container {
+    flex-direction: column;
+  }
+  #habilidades .description {
+    position: relative;
+  }
+
+  #habilidades .description {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  #habilidades .habilidades__cards {
+    width: 100%;
+  }
+  #habilidades .habilidades__cards .card.active {
+    box-shadow: none;
+  }
+  #habilidades .description {
+    max-width: 100%;
+  }
+  p + .habilidades__cards.mobile {
+    margin-top: 2rem;
+  }
+  #habilidades .habilidades__cards .card.active h2{
+    color: #fff;
+  }
+  #habilidades .habilidades__cards .card p{
+    line-height: auto;
   }
 }

@@ -24,7 +24,7 @@
     }
   }
   .options {
-    margin-top: 2.5rem;
+    margin-top: 4rem;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -117,3 +117,34 @@
     }
   }
 }
+
+@media (max-width: 768px) {
+  #projetos .options {
+    height: auto;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  #projetos {
+    padding: 2.5rem 0;
+  }
+  #projetos .option,
+  #projetos .option:not(.active),
+  #projetos .option.active {
+    height: 192px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-size: cover;
+  }
+  #projetos .label {
+    background: linear-gradient(0deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+  #projetos .label .main {
+    position: initial;
+    left: 0;
+    width: auto;
+  }
+}
+

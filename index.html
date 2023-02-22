@@ -84,12 +84,6 @@
         </div>
 
         <img
-          src="./assets/images/blur.svg"
-          class="absolute blur1"
-          onload="SVGInject(this)"
-        />
-
-        <img
           src="./assets/images/hero__line.svg"
           class="absolute hero__line"
           onload="SVGInject(this)"
@@ -97,6 +91,12 @@
         <img
           src="./assets/images/hero__line2.svg"
           class="absolute hero__line2"
+          onload="SVGInject(this)"
+        />
+
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur1"
           onload="SVGInject(this)"
         />
       </section>
@@ -127,9 +127,10 @@
               <h2>Olá eu me chamo <strong>Eros Mariano!</strong></h2>
               <p>
                 Iniciei na programação em 2018 através da ONG
-                <a href="#">passos mágicos</a> que me trouxe a possibilidade de
-                fazer um curso pró profissão em tecnologia na Politécnica da USP
-                e em uma das matérias me apaixonei pelo desenvolvimento WEB
+                <a href="https://passosmagicos.org.br/">Passos Mágicos</a> que
+                me trouxe a possibilidade de fazer um curso pró-profissão em
+                tecnologia na Politécnica da USP e em uma das matérias me
+                apaixonei pelo desenvolvimento WEB.
               </p>
             </div>
           </div>
@@ -152,7 +153,7 @@
           <div class="tag">Habilidades</div>
 
           <div class="habilidades__container">
-            <div class="habilidades__cards">
+            <div class="habilidades__cards desktop">
               <div
                 class="card active"
                 data-aos="fade-up"
@@ -191,6 +192,22 @@
               </div>
             </div>
 
+            <div class="habilidades__cards mobile">
+              <div
+                class="card active"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
+                <div>
+                  <h2>HTML, CSS e JavaScript</h2>
+                  <p>As bases do desenvolvimento web</p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__wifi.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+            </div>
             <p
               class="description active"
               data-aos="fade-up"
@@ -204,7 +221,19 @@
               trazendo cada vez mais <strong>dinamismo</strong> para os sites.
             </p>
 
-            <p class="description">
+            <div class="habilidades__cards mobile">
+              <div class="card" data-aos="fade-up" data-aos-duration="1000">
+                <div>
+                  <h2>ReactJS & NextJs</h2>
+                  <p>Um desenvolvimento web cada vez mais fluído</p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__react.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+            </div>
+            <p class="description" data-aos="fade-up" data-aos-duration="1000">
               Em busca de uma aplicação cada vez <strong>mais fluída</strong> e
               <strong>com alto desempenho</strong> escolhi me especializar em
               <strong>ReactJs</strong> e <strong>NextJs</strong>, sempre focando
@@ -216,7 +245,20 @@
               <strong>muito mais rápida</strong>.
             </p>
 
-            <p class="description">
+            <div class="habilidades__cards mobile">
+              <div class="card" data-aos="fade-up" data-aos-duration="1000">
+                <div>
+                  <h2>WordPress & WebFlow</h2>
+                  <p>Desenvolvimento nos CMS mais famosos</p>
+                </div>
+                <img
+                  src="./assets/images/habilidades__wordpress.svg"
+                  onload="SVGInject(this)"
+                />
+              </div>
+            </div>
+
+            <p class="description" data-aos="fade-up" data-aos-duration="1000">
               Muitas vezes o site que estou desenvolvendo é para o cliente
               final, sendo assim o desenvolvimento em código pode não ser viável
               para ele, logo o projeto é feito em um dos dois
@@ -240,7 +282,9 @@
 
           <div class="interagir">
             <img src="./assets/images/projetos__click.svg" alt="" />
-            <p>Para ver o projeto, clique na descrição</p>
+            <p>
+              Clique nos cards para ver mais e na descrição para ver o projeto
+            </p>
           </div>
           <div class="projetos__container">
             <div class="options">

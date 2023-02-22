@@ -212,16 +212,7 @@
   }
 }
 
-body,
-html {
-  overflow-x: hidden;
-}
-#sobre,
-#habilidades,
-#projetos,
-#contato {
-  display: none !important;
-}
+
 
 @media (max-width: 768px) {
   #hero .container {
@@ -259,6 +250,6 @@ html {
     display: none;
   }
   #hero {
-    padding-top: 5.625rem;
+    padding-top: 6.625rem;
   }
 }
