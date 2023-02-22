@@ -1,7 +1,17 @@
 #habilidades {
   padding: 5rem 0;
   display: block;
-  height: 120vh;
+  height: 200vh;
+  position: relative;
+  .blur3 {
+    left: -31.25rem;
+    top: -25rem;
+  }
+
+  .blur4 {
+    left: -31.25rem;
+    top: 50rem;
+  }
 
   .container {
     position: sticky;
@@ -45,6 +55,10 @@
     right: 0;
     transition: 0.3s;
 
+    strong {
+      font-weight: 700;
+      color: #fff;
+    }
     &.active {
       opacity: 1;
       pointer-events: all;

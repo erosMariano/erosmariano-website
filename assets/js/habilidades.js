@@ -7,15 +7,15 @@ const observer = new IntersectionObserver((entries, observer) => {
 
   if (entry.isIntersecting) {
     window.addEventListener("scroll", () => {
-      if (window.scrollY < entry.target.clientHeight + 400) {
+      if (window.scrollY < entry.target.clientHeight) {
         removeActive();
         card[0].classList.add("active");
         descriptions[0].classList.add("active");
-      } else if (window.scrollY < entry.target.clientHeight + 700) {
+      } else if (window.scrollY < entry.target.clientHeight + 300) {
         removeActive();
         card[1].classList.add("active");
         descriptions[1].classList.add("active");
-      } else if (window.scrollY < entry.target.clientHeight + 1000) {
+      } else if (window.scrollY < entry.target.clientHeight + 500) {
         removeActive();
         card[2].classList.add("active");
         descriptions[2].classList.add("active");

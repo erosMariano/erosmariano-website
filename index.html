@@ -24,20 +24,20 @@
     <title>Eros Mariano - Desenvolvedor Front-End</title>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-    <link rel="stylesheet" href="./assets/scss/main.css" />
+    <link rel="stylesheet" href="./assets/scss/home/main.css" />
     <script src="./assets/js/svg-inject.js"></script>
   </head>
   <body>
     <main>
       <header class="header">
         <div class="container">
-          <img src="./assets/images/logo.svg" alt="" />
+          <a href="#hero"><img src="./assets/images/logo.svg" alt="" /></a>
           <nav>
             <ul>
               <li><a href="#sobre">Sobre</a></li>
-              <li><a href="">Habilidades</a></li>
-              <li><a href="">Projetos</a></li>
-              <li><a href="">Contato</a></li>
+              <li><a href="#habilidades">Habilidades</a></li>
+              <li><a href="#projetos">Projetos</a></li>
+              <li><a href="#contato">Contato</a></li>
             </ul>
           </nav>
         </div>
@@ -78,9 +78,7 @@
           </div>
         </div>
 
-        <div
-          class="scroll"
-        >
+        <div class="scroll">
           <img src="./assets/images/mouse.svg" onload="SVGInject(this)" />
           <h6>Role para baixo</h6>
         </div>
@@ -97,13 +95,12 @@
       </section>
 
       <section id="sobre">
-        <img
-          src="./assets/images/blur.svg"
-          class="absolute blur2"
-          onload="SVGInject(this)"
-        />
-
         <div class="container">
+          <img
+            src="./assets/images/blur.svg"
+            class="absolute blur2"
+            onload="SVGInject(this)"
+          />
           <div class="tag">Sobre</div>
 
           <div class="sobreMim__container">
@@ -118,6 +115,7 @@
               class="sobreMim__text"
               data-aos="fade-up"
               data-aos-duration="1000"
+              data-aos-delay="150"
             >
               <h2>Olá eu me chamo <strong>Eros Mariano!</strong></h2>
               <p>
@@ -132,12 +130,27 @@
       </section>
 
       <section id="habilidades">
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur3"
+          onload="SVGInject(this)"
+        />
+
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur4"
+          onload="SVGInject(this)"
+        />
         <div class="container">
           <div class="tag">Habilidades</div>
 
           <div class="habilidades__container">
             <div class="habilidades__cards">
-              <div class="card active">
+              <div
+                class="card active"
+                data-aos="fade-up"
+                data-aos-duration="1000"
+              >
                 <div>
                   <h2>HTML, CSS e JavaScript</h2>
                   <p>As bases do desenvolvimento web</p>
@@ -148,7 +161,7 @@
                 />
               </div>
 
-              <div class="card">
+              <div class="card" data-aos="fade-up" data-aos-duration="1000">
                 <div>
                   <h2>ReactJS & NextJs</h2>
                   <p>Um desenvolvimento web cada vez mais fluído</p>
@@ -159,13 +172,10 @@
                 />
               </div>
 
-              <div class="card">
+              <div class="card" data-aos="fade-up" data-aos-duration="1000">
                 <div>
-                  <h2>Wordpress</h2>
-                  <p>
-                    Um CMS que alimenta mais de 35% de todos os sites da
-                    internet
-                  </p>
+                  <h2>WordPress & WebFlow</h2>
+                  <p>Desenvolvimento nos CMS mais famosos</p>
                 </div>
                 <img
                   src="./assets/images/habilidades__wordpress.svg"
@@ -174,31 +184,62 @@
               </div>
             </div>
 
-            <p class="description active">
-              HTML é a base da criação de páginas web e permite a criação de estruturas e conteúdos.
+            <p
+              class="description active"
+              data-aos="fade-up"
+              data-aos-duration="2000"
+              data-aos-delay="150"
+            >
+              <strong>Especialista nas três bases da Web</strong> HTML, CSS e
+              JavaScript, e em constante aprendizado, desenvolvo
+              <strong>diversos sites</strong> com essas ferramentas e atualmente
+              venho buscando o <strong>Motion</strong> dentro dos sites,
+              trazendo cada vez mais <strong>dinamismo</strong> para os sites.
             </p>
 
-            <p class="description active">
-              React é uma biblioteca de JavaScript para construir interfaces de usuário, e o Next é um framework que usa o React para criar aplicativos web escaláveis.
-            </p>
-            
-            <p class="description active">
-              WordPress é uma plataforma popular para criação de sites, com recursos intuitivos de gerenciamento de conteúdo.
+            <p class="description">
+              Em busca de uma aplicação cada vez <strong>mais fluída</strong> e
+              <strong>com alto desempenho</strong> escolhi me especializar em
+              <strong>ReactJs</strong> e <strong>NextJs</strong>, sempre focando
+              em SEO com ambas as ferramentas. Ao se tratar do NextJs aproveito
+              o SSR (Server Side Rendering) e ISR (Incremental Static
+              Regeneration), onde grande parte das
+              <strong>requisições são feita no lado do servidor</strong>,
+              deixando assim a área do cliente
+              <strong>muito mais rápida</strong>
             </p>
 
+            <p class="description">
+              Muitas vezes o site que estou desenvolvendo é para o cliente
+              final, sendo assim o desenvolvimento em código pode não ser viável
+              para ele, logo o projeto é feito em um dos dois
+              <strong>maiores CMS atuais</strong>, sendo o WordPress que hoje
+              tem mais de <strong>35% dos sites da internet</strong> e o WebFlow
+              que vem <strong>crescendo cada vez mais</strong>.
+            </p>
           </div>
         </div>
       </section>
 
       <section id="projetos">
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur5"
+          onload="SVGInject(this)"
+        />
+
         <div class="container">
           <div class="tag">Projetos</div>
 
+          <div class="interagir">
+            <img src="./assets/images/projetos__click.svg" alt="" />
+            <p>Para ver o projeto, clique na descrição</p>
+          </div>
           <div class="projetos__container">
             <div class="options">
               <div
                 class="option active"
-                style="--optionBackground: url(../images/adversoLab.png)"
+                style="--optionBackground: url(../../images/adversoLab.png)"
               >
                 <div class="label">
                   <div class="icon">
@@ -216,45 +257,43 @@
 
               <div
                 class="option"
-                style="--optionBackground: url(../images/hent.png)"
+                style="--optionBackground: url(../../images/hent.png)"
               >
                 <div class="label">
                   <div class="icon">
-                    <img
-                      src="./assets/images/hent_icon.png"
-                      alt=""
-                    />
+                    <img src="./assets/images/hent_icon.png" alt="" />
                   </div>
 
                   <a href="https://www.hent.com.br/" class="info">
-                    <div class="main">Projeto Hent - NextJs & Styled Components</div>
+                    <div class="main">
+                      Projeto Hent - NextJs & Styled Components
+                    </div>
                   </a>
                 </div>
               </div>
               <div
                 class="option"
-                style="--optionBackground: url(../images/nft.png)"
+                style="--optionBackground: url(../../images/nft.png)"
               >
                 <div class="label">
                   <div class="icon">
-                    <img
-                      src="./assets/images/nft_icon.png"
-                      alt=""
-                    />
+                    <img src="./assets/images/nft_icon.png" alt="" />
                   </div>
 
                   <a
                     href="https://github.com/erosMariano/NFT-with-nextjs"
                     class="info"
                   >
-                    <div class="main">E-commerce NFT - NextJs com Sanity.io de CMS</div>
+                    <div class="main">
+                      E-commerce NFT - NextJs com Sanity.io de CMS
+                    </div>
                   </a>
                 </div>
               </div>
 
               <div
                 class="option"
-                style="--optionBackground: url(../images/lastlink.png)"
+                style="--optionBackground: url(../../images/lastlink.png)"
               >
                 <div class="label">
                   <div class="icon">
@@ -265,7 +304,7 @@
                   </div>
 
                   <a href="https://lastlink.com/" class="info">
-                    <div class="main">Projeto Adverso Lab</div>
+                    <div class="main">Projeto LastLink - WebFlow</div>
                   </a>
                 </div>
               </div>
@@ -274,13 +313,135 @@
         </div>
       </section>
 
+      <section id="contato">
+        <img
+          src="./assets/images/blur.svg"
+          class="absolute blur6"
+          onload="SVGInject(this)"
+        />
 
+        <div class="container">
+          <div class="tag">Contato</div>
+
+          <div class="contato__text">
+            <div class="contato__container">
+              <div>
+                <h2 data-aos="fade-up" data-aos-duration="1000">
+                  Vamos conversar
+                </h2>
+                <span
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="150"
+                  >Retorno em no máximo 24 horas</span
+                >
+                <div
+                  class="socialMedias"
+                  data-aos="fade-up"
+                  data-aos-duration="1000"
+                  data-aos-delay="250"
+                >
+                  <a href="tel:11955507661">
+                    <img src="./assets/images/social__phone.svg" alt="" />
+                    <span>(11) 95550-7661</span>
+                  </a>
+
+                  <a href="mailto:erosmariano1@gmail.com">
+                    <img src="./assets/images/social__email.svg" alt="" />
+                    <span>erosmariano1@gmail.com</span>
+                  </a>
+
+                  <a href="./assets/erosmariano-cv.pdf" download>
+                    <img src="./assets/images/social__download.svg" alt="" />
+                    <span>Download CV</span>
+                  </a>
+
+                  <a href="https://www.linkedin.com/in/erosmariano/">
+                    <img src="./assets/images/social__linkedin.svg" alt="" />
+                    <span>LinkedIn</span>
+                  </a>
+
+                  <a href="https://github.com/erosMariano">
+                    <img src="./assets/images/social__github.svg" alt="" />
+                    <span>Github</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="form">
+                <form action="https://formsubmit.co/erosmariano1@gmail.com" method="POST">
+                  <label for="nomeInput">
+                    <span>Nome</span>
+
+                    <div class="box_input">
+                      <input
+                        type="text"
+                        id="nomeInput"
+                        name="Nome"
+                        placeholder="Digite seu nome"
+                        required
+                      />
+
+                      <img
+                        src="./assets/images/form__nome.svg"
+                        onload="SVGInject(this)"
+                      />
+                    </div>
+                  </label>
+                  <input type="hidden" name="_next" value="https://www.erosmariano.com.br/success.html">
+
+
+                  <label for="email">
+                    <span>E-mail</span>
+
+                    <div class="box_input">
+                      <input
+                        required
+                        type="email"
+                        name="email"
+                        id="nomeInput"
+                        placeholder="Digite seu e-mail"
+                      />
+
+                      <img
+                        src="./assets/images/form__email.svg"
+                        onload="SVGInject(this)"
+                      />
+                    </div>
+                  </label>
+
+                  <label for="mensagem">
+                    <span>Mensagem</span>
+
+                    <div class="box_input">
+                      <textarea
+                        id="mensagem"
+                        placeholder="Mensagem"
+                        name="mensagem"
+                        required
+                      ></textarea>
+                    </div>
+                  </label>
+
+                  <button type="submit">Entre em contato</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <img
         src="./assets/images/blur.svg"
         class="absolute blur1"
         onload="SVGInject(this)"
       />
     </main>
+
+    <footer class="footer">
+      <div class="container">
+        <p>Criado por Eros Mariano</p>
+      </div>
+    </footer>
 
     <script src="./assets/js/header.js"></script>
     <script src="./assets/js/habilidades.js"></script>

@@ -5,6 +5,7 @@
     left: -31.25rem;
     top: -16.25rem;
   }
+
   .tag {
     @include tagSection();
   }
@@ -52,8 +53,8 @@
       line-height: 30px;
       color: #ffffff;
 
-      a{
-        color: #79F1E8;
+      a {
+        color: #79f1e8;
       }
     }
   }

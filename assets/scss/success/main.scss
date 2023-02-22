@@ -124,13 +124,18 @@ table {
 }
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
 body {
   background: #100f16;
   overflow-x: hidden;
   box-sizing: border-box;
 }
-
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 main {
   .absolute {
     position: absolute;
@@ -153,7 +158,6 @@ main {
   width: 10px;
 }
 
-
 /* Track */
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -165,10 +169,5 @@ main {
   border-radius: 10px;
 }
 
-
-@import "./mixins";
 @import "./header";
 @import "./hero";
-@import "./sobre";
-@import "./habilidades";
-@import "./projetos";
