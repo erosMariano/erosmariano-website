@@ -738,6 +738,10 @@ main .blur1 {
   gap: 8px;
   margin-top: 16px;
 }
+#projetos .interagir strong{
+  font-weight: 700;
+  color: #d2d2d2;
+}
 #projetos .interagir p {
   font-family: "Outfit", sans-serif;
   font-style: normal;
