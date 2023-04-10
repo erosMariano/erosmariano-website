@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: https://www.erosmariano.com.br/
+Sitemap: https://www.erosmariano.com.br/sitemap.xml
