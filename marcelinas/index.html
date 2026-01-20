@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Briefing - Landing Page de Reforço Escolar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .form-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 22px;
+            color: #667eea;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #667eea;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        .checkbox-item label {
+            margin: 0;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        .submit-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 50px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .input-with-other {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .input-with-other input[type="text"] {
+            flex: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .form-content {
+                padding: 30px 20px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+        }
+
+        .progress-bar {
+            position: sticky;
+            top: 0;
+            height: 4px;
+            background: #f0f0f0;
+            z-index: 100;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progressBar"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Briefing - Landing Page</h1>
+            <p>Preencha as informações abaixo para criarmos a landing page perfeita para você!</p>
+        </div>
+
+        <form id="briefingForm" class="form-content">
+            <!-- Seção 1: Objetivo do Negócio -->
+            <div class="section">
+                <h2 class="section-title">1 Objetivo do Negócio</h2>
+                
+                <div class="form-group">
+                    <label>Qual é o principal objetivo da landing page?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="objetivo" value="Captar leads (WhatsApp, formulário)" id="obj1">
+                            <label for="obj1">Captar leads (WhatsApp, formulário)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="objetivo" value="Agendamento de aula experimental" id="obj2">
+                            <label for="obj2">Agendamento de aula experimental</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="objetivo" value="Matrícula direta" id="obj3">
+                            <label for="obj3">Matrícula direta</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="objetivo" value="Divulgação institucional" id="obj4">
+                            <label for="obj4">Divulgação institucional</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="objetivo" id="obj5">
+                            <label for="obj5">Outro:</label>
+                            <input type="text" name="objetivo_outro" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="acao_visitante">Qual ação você quer que o visitante faça ao entrar na página?</label>
+                    <textarea id="acao_visitante" name="acao_visitante" placeholder="Descreva a ação principal que espera do visitante..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="sazonalidade">Existe alguma sazonalidade? (Ex: volta às aulas, reforço para provas, férias)</label>
+                    <textarea id="sazonalidade" name="sazonalidade" placeholder="Descreva se há períodos específicos do ano..."></textarea>
+                </div>
+            </div>
+
+            <!-- Seção 2: Público-Alvo -->
+            <div class="section">
+                <h2 class="section-title">2 Público-Alvo</h2>
+                
+                <div class="form-group">
+                    <label>Quem é o público principal?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="publico" value="Pais" id="pub1">
+                            <label for="pub1">Pais</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="publico" value="Responsáveis" id="pub2">
+                            <label for="pub2">Responsáveis</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="publico" id="pub3">
+                            <label for="pub3">Outro:</label>
+                            <input type="text" name="publico_outro" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="idade_pais">Idade média dos pais/responsáveis:</label>
+                    <input type="text" id="idade_pais" name="idade_pais" placeholder="Ex: 30-45 anos">
+                </div>
+
+                <div class="form-group">
+                    <label for="faixa_criancas">Faixa etária das crianças atendidas:</label>
+                    <input type="text" id="faixa_criancas" name="faixa_criancas" placeholder="Ex: 5-8 anos, fundamental I">
+                </div>
+
+                <div class="form-group">
+                    <label>Qual é a principal dor desse público?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="dor" value="Dificuldade escolar" id="dor1">
+                            <label for="dor1">Dificuldade escolar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="dor" value="Falta de atenção" id="dor2">
+                            <label for="dor2">Falta de atenção</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="dor" value="Reforço para provas" id="dor3">
+                            <label for="dor3">Reforço para provas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="dor" value="Alfabetização" id="dor4">
+                            <label for="dor4">Alfabetização</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="dor" value="Organização e disciplina" id="dor5">
+                            <label for="dor5">Organização e disciplina</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="dor" id="dor6">
+                            <label for="dor6">Outra:</label>
+                            <input type="text" name="dor_outra" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Tipo de linguagem:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="linguagem" value="Emocional" id="ling1">
+                            <label for="ling1">Mais emocional</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="linguagem" value="Objetiva" id="ling2">
+                            <label for="ling2">Mais objetiva</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="linguagem" value="Institucional" id="ling3">
+                            <label for="ling3">Mais institucional</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regiao">Região atendida (bairro/cidade):</label>
+                    <input type="text" id="regiao" name="regiao" placeholder="Ex: Centro, São Paulo">
+                </div>
+
+                <div class="form-group">
+                    <label>Atendimento:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="atendimento" value="Presencial" id="atend1">
+                            <label for="atend1">Presencial</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="atendimento" value="Online" id="atend2">
+                            <label for="atend2">Online</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="atendimento" value="Híbrido" id="atend3">
+                            <label for="atend3">Híbrido</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 3: Proposta de Valor -->
+            <div class="section">
+                <h2 class="section-title">3 Proposta de Valor</h2>
+                
+                <div class="form-group">
+                    <label for="diferencial">O que torna sua escola diferente das outras?</label>
+                    <textarea id="diferencial" name="diferencial" placeholder="Descreva seus diferenciais competitivos..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Quais métodos vocês usam?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="metodos" value="Material próprio" id="met1">
+                            <label for="met1">Material próprio</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="metodos" value="Aulas personalizadas" id="met2">
+                            <label for="met2">Aulas personalizadas</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="metodos" id="met3">
+                            <label for="met3">Metodologia específica:</label>
+                            <input type="text" name="metodologia_especifica" placeholder="Qual?">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="formacao">Formação específica dos professores:</label>
+                    <textarea id="formacao" name="formacao" placeholder="Descreva a formação da equipe..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Existe acompanhamento individual?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="acompanhamento" value="Sim" id="acomp1">
+                            <label for="acomp1">Sim</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="acompanhamento" value="Não" id="acomp2">
+                            <label for="acomp2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Relatório para os pais:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="relatorio" value="Sim, existe" id="rel1">
+                            <label for="rel1">Sim, existe</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="relatorio" value="Não existe" id="rel2">
+                            <label for="rel2">Não existe</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="relatorio" value="Gostaria de implementar" id="rel3">
+                            <label for="rel3">Gostaria de implementar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Trabalham com:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="especialidades" value="TDAH" id="esp1">
+                            <label for="esp1">TDAH</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="especialidades" value="Dificuldades de alfabetização" id="esp2">
+                            <label for="esp2">Dificuldades de alfabetização</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="especialidades" value="Reforço para provas específicas" id="esp3">
+                            <label for="esp3">Reforço para provas específicas</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="especialidades" id="esp4">
+                            <label for="esp4">Outros:</label>
+                            <input type="text" name="especialidades_outras" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="resultados">Qual resultado você mais vê nos alunos?</label>
+                    <textarea id="resultados" name="resultados" placeholder="Descreva os principais resultados alcançados..."></textarea>
+                </div>
+            </div>
+
+            <!-- Seção 4: Serviços e Produtos -->
+            <div class="section">
+                <h2 class="section-title">4 Serviços e Produtos</h2>
+                
+                <div class="form-group">
+                    <label>Quais serviços existem?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="servicos" value="Reforço escolar regular" id="serv1">
+                            <label for="serv1">Reforço escolar regular</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="servicos" value="Aula particular" id="serv2">
+                            <label for="serv2">Aula particular</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="servicos" value="Preparação para provas" id="serv3">
+                            <label for="serv3">Preparação para provas</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="servicos" value="Alfabetização" id="serv4">
+                            <label for="serv4">Alfabetização</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="servicos" value="Apoio pedagógico" id="serv5">
+                            <label for="serv5">Apoio pedagógico</label>
+                        </div>
+                        <div class="checkbox-item input-with-other">
+                            <input type="checkbox" name="servicos" id="serv6">
+                            <label for="serv6">Outros:</label>
+                            <input type="text" name="servicos_outros" placeholder="Especifique">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="planos">Planos e pacotes disponíveis:</label>
+                    <textarea id="planos" name="planos" placeholder="Descreva os planos mensais, pacotes..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Valores na página:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="valores_pagina" value="Sim, mostrar valores" id="val1">
+                            <label for="val1">Sim, mostrar valores</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="valores_pagina" value="Não mostrar" id="val2">
+                            <label for="val2">Não mostrar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="valores_pagina" value="Sob consulta" id="val3">
+                            <label for="val3">Apenas sob consulta</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Aula experimental gratuita:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="aula_experimental" value="Sim" id="aula1">
+                            <label for="aula1">Sim</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="aula_experimental" value="Não" id="aula2">
+                            <label for="aula2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="horarios">Horários disponíveis:</label>
+                    <input type="text" id="horarios" name="horarios" placeholder="Ex: Segunda a sexta, 14h às 18h">
+                </div>
+
+                <div class="form-group">
+                    <label>Modalidade:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="modalidade" value="Individual" id="mod1">
+                            <label for="mod1">Individual</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="modalidade" value="Grupo" id="mod2">
+                            <label for="mod2">Grupo</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="modalidade" value="Online" id="mod3">
+                            <label for="mod3">Online</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="modalidade" value="Presencial" id="mod4">
+                            <label for="mod4">Presencial</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 5: Confiança e Prova Social -->
+            <div class="section">
+                <h2 class="section-title">5 Confiança e Prova Social</h2>
+                
+                <div class="form-group">
+                    <label for="depoimentos">Há depoimentos de pais ou alunos? (Se sim, compartilhe alguns)</label>
+                    <textarea id="depoimentos" name="depoimentos" placeholder="Cole aqui alguns depoimentos..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Fotos reais do espaço:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="fotos" value="Sim, tenho" id="foto1">
+                            <label for="foto1">Sim, tenho</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="fotos" value="Não tenho" id="foto2">
+                            <label for="foto2">Não tenho</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="fotos" value="Posso providenciar" id="foto3">
+                            <label for="foto3">Posso providenciar</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="redes_sociais">Redes sociais ativas:</label>
+                    <input type="text" id="redes_sociais" name="redes_sociais" placeholder="Instagram, Facebook, etc.">
+                </div>
+
+                <div class="form-group">
+                    <label for="anos_atuacao">Quantos anos de atuação?</label>
+                    <input type="text" id="anos_atuacao" name="anos_atuacao" placeholder="Ex: 5 anos">
+                </div>
+
+                <div class="form-group">
+                    <label for="certificacoes">Certificações, parcerias ou premiações:</label>
+                    <textarea id="certificacoes" name="certificacoes" placeholder="Descreva certificações, parcerias..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Podem mostrar resultados (antes/depois, evolução)?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="mostrar_resultados" value="Sim" id="res1">
+                            <label for="res1">Sim</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="mostrar_resultados" value="Não" id="res2">
+                            <label for="res2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dados_empresa">CNPJ, razão social, endereço físico:</label>
+                    <textarea id="dados_empresa" name="dados_empresa" placeholder="Informações da empresa..."></textarea>
+                </div>
+            </div>
+
+            <!-- Seção 6: Identidade Visual -->
+            <div class="section">
+                <h2 class="section-title">6 Identidade Visual</h2>
+                
+                <div class="form-group">
+                    <label>Possui logo?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="logo" value="Sim" id="logo1">
+                            <label for="logo1">Sim</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="logo" value="Não" id="logo2">
+                            <label for="logo2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Identidade visual definida:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="identidade_visual" value="Sim" id="id1">
+                            <label for="id1">Sim (cores, fontes definidas)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="identidade_visual" value="Não" id="id2">
+                            <label for="id2">Não</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="cores">Cores preferidas:</label>
+                    <input type="text" id="cores" name="cores" placeholder="Ex: Azul, amarelo, verde">
+                </div>
+
+                <div class="form-group">
+                    <label for="site_atual">Site atual (se houver):</label>
+                    <input type="text" id="site_atual" name="site_atual" placeholder="www.seusite.com.br">
+                </div>
+
+                <div class="form-group">
+                    <label for="referencias_gosta">Referências de sites que gosta:</label>
+                    <textarea id="referencias_gosta" name="referencias_gosta" placeholder="Cole links de sites que gosta..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="referencias_nao_gosta">Referências que NÃO gosta:</label>
+                    <textarea id="referencias_nao_gosta" name="referencias_nao_gosta" placeholder="Cole links ou descreva estilos que não gosta..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Estilo visual desejado:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="estilo" value="Infantil" id="est1">
+                            <label for="est1">Infantil</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="estilo" value="Moderna" id="est2">
+                            <label for="est2">Moderna</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="estilo" value="Institucional" id="est3">
+                            <label for="est3">Institucional</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="estilo" value="Aconchegante" id="est4">
+                            <label for="est4">Aconchegante</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 7: Conteúdo e Linguagem -->
+            <div class="section">
+                <h2 class="section-title">7 Conteúdo e Linguagem</h2>
+                
+                <div class="form-group">
+                    <label for="descricao_negocio">Como você explicaria seu negócio em uma frase?</label>
+                    <input type="text" id="descricao_negocio" name="descricao_negocio" placeholder="Ex: Transformamos dificuldades em conquistas escolares">
+                </div>
+
+                <div class="form-group">
+                    <label for="palavras_chave">Palavras que gostaria que associassem à sua marca:</label>
+                    <input type="text" id="palavras_chave" name="palavras_chave" placeholder="Ex: confiança, resultado, carinho, excelência">
+                </div>
+
+                <div class="form-group">
+                    <label for="slogan">Slogan (se houver):</label>
+                    <input type="text" id="slogan" name="slogan" placeholder="Seu slogan...">
+                </div>
+
+                <div class="form-group">
+                    <label for="termos_evitar">Termos que NÃO quer usar:</label>
+                    <input type="text" id="termos_evitar" name="termos_evitar" placeholder="Palavras ou expressões a evitar...">
+                </div>
+
+                <div class="form-group">
+                    <label>Tom de linguagem:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tom" value="Emocional" id="tom1">
+                            <label for="tom1">Emocional</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tom" value="Técnica" id="tom2">
+                            <label for="tom2">Técnica</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tom" value="Simples" id="tom3">
+                            <label for="tom3">Simples</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="tom" value="Motivacional" id="tom4">
+                            <label for="tom4">Motivacional</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 8: Conversão e Contato -->
+            <div class="section">
+                <h2 class="section-title">8 Conversão e Contato</h2>
+                
+                <div class="form-group">
+                    <label>Como prefere receber contatos?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="canal_contato" value="WhatsApp" id="canal1">
+                            <label for="canal1">WhatsApp</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="canal_contato" value="Telefone" id="canal2">
+                            <label for="canal2">Telefone</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="canal_contato" value="Email" id="canal3">
+                            <label for="canal3">Email</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="canal_contato" value="Formulário" id="canal4">
+                            <label for="canal4">Formulário no site</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Informações a captar do lead:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Nome" id="lead1">
+                            <label for="lead1">Nome</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Telefone" id="lead2">
+                            <label for="lead2">Telefone</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Email" id="lead3">
+                            <label for="lead3">Email</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Idade da criança" id="lead4">
+                            <label for="lead4">Idade da criança</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Série escolar" id="lead5">
+                            <label for="lead5">Série escolar</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" name="info_lead" value="Dificuldade principal" id="lead6">
+                            <label for="lead6">Dificuldade principal</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Seção 9: Restrições -->
+            <div class="section">
+                <h2 class="section-title">9 Restrições e Prazos</h2>
+                
+                <div class="form-group">
+                    <label for="exigencias_legais">Exigências legais específicas:</label>
+                    <textarea id="exigencias_legais" name="exigencias_legais" placeholder="Alguma obrigação legal específica?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="info_obrigatoria">Informações obrigatórias na página:</label>
+                    <textarea id="info_obrigatoria" name="info_obrigatoria" placeholder="Algo que precisa aparecer obrigatoriamente?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="restricoes_imagem">Imagens ou conteúdos que NÃO podem usar:</label>
+                    <textarea id="restricoes_imagem" name="restricoes_imagem" placeholder="Alguma restrição de imagem ou conteúdo?"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="prazo">Prazo desejado para entrega:</label>
+                    <input type="text" id="prazo" name="prazo" placeholder="Ex: 15 dias, 1 mês">
+                </div>
+
+                <div class="form-group">
+                    <label for="orcamento">Orçamento disponível:</label>
+                    <input type="text" id="orcamento" name="orcamento" placeholder="Faixa de investimento">
+                </div>
+            </div>
+
+            <!-- Seção 10: Informações Adicionais -->
+            <div class="section">
+                <h2 class="section-title"> Informações Adicionais</h2>
+                
+                <div class="form-group">
+                    <label for="info_adicional">Há algo mais importante que gostaria de compartilhar?</label>
+                    <textarea id="info_adicional" name="info_adicional" placeholder="Qualquer informação adicional relevante para o projeto..."></textarea>
+                </div>
+            </div>
+
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">📤 Enviar Briefing</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('briefingForm');
+        const progressBar = document.getElementById('progressBar');
+        const STORAGE_KEY = 'briefing_form_data';
+
+        // Atualizar barra de progresso conforme scroll
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollTop = window.scrollY;
+            const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+            progressBar.style.width = scrollPercent + '%';
+        });
+
+        // Salvar dados do formulário em tempo real
+        function saveFormData() {
+            const formData = {};
+            
+            // Salvar inputs de texto, email, tel e textareas
+            form.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], textarea').forEach(input => {
+                if (input.name) {
+                    formData[input.name] = input.value;
+                }
+            });
+            
+            // Salvar checkboxes
+            form.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                if (checkbox.id) {
+                    formData[checkbox.id] = checkbox.checked;
+                }
+            });
+            
+            // Salvar no localStorage apenas os dados do formulário
+            const savedData = {
+                data: formData,
+                timestamp: new Date().getTime()
+            };
+            
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+            } catch (e) {
+                console.log('Não foi possível salvar os dados');
+            }
+        }
+
+        // Carregar dados salvos
+        function loadFormData() {
+            try {
+                const savedData = localStorage.getItem(STORAGE_KEY);
+                if (!savedData) return;
+                
+                const { data, timestamp } = JSON.parse(savedData);
+                
+                // Verificar se os dados têm menos de 7 dias (para não manter dados muito antigos)
+                const sevenDays = 7 * 24 * 60 * 60 * 1000;
+                if (new Date().getTime() - timestamp > sevenDays) {
+                    localStorage.removeItem(STORAGE_KEY);
+                    return;
+                }
+                
+                // Restaurar inputs de texto, email, tel e textareas
+                Object.keys(data).forEach(key => {
+                    const element = form.querySelector(`[name="${key}"]`);
+                    if (element && (element.type === 'text' || element.type === 'email' || element.type === 'tel' || element.tagName === 'TEXTAREA')) {
+                        element.value = data[key];
+                    }
+                });
+                
+                // Restaurar checkboxes
+                Object.keys(data).forEach(key => {
+                    const checkbox = form.querySelector(`#${key}`);
+                    if (checkbox && checkbox.type === 'checkbox') {
+                        checkbox.checked = data[key];
+                    }
+                });
+                
+            } catch (e) {
+                console.log('Não foi possível carregar os dados salvos');
+            }
+        }
+
+        // Limpar dados salvos após envio
+        function clearFormData() {
+            try {
+                localStorage.removeItem(STORAGE_KEY);
+            } catch (e) {
+                console.log('Não foi possível limpar os dados');
+            }
+        }
+
+        // Carregar dados ao iniciar
+        loadFormData();
+
+        // Salvar dados a cada mudança
+        form.addEventListener('input', saveFormData);
+        form.addEventListener('change', saveFormData);
+
+        // Função para coletar valores dos checkboxes
+        function getCheckboxValues(name) {
+            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+            const values = Array.from(checkboxes).map(cb => cb.value);
+            
+            // Verificar se há campo "outro" preenchido
+            const outroInput = document.querySelector(`input[name="${name}_outro"]`);
+            if (outroInput && outroInput.value.trim()) {
+                const outroCheckbox = document.querySelector(`input[name="${name}"]#${outroInput.closest('.checkbox-item').querySelector('input[type="checkbox"]').id}`);
+                if (outroCheckbox && outroCheckbox.checked) {
+                    values.push(outroInput.value.trim());
+                }
+            }
+            
+            return values.join(', ') || 'Não informado';
+        }
+
+        // Função para formatar o briefing
+        function formatBriefing(formData) {
+            let message = `*BRIEFING - LANDING PAGE*\n\n`;
+            
+            message += `*1 OBJETIVO DO NEGÓCIO*\n`;
+            message += `Objetivo: ${getCheckboxValues('objetivo')}\n`;
+            message += `Ação do visitante: ${formData.get('acao_visitante') || 'Não informado'}\n`;
+            message += `Sazonalidade: ${formData.get('sazonalidade') || 'Não informado'}\n\n`;
+            
+            message += `*2 PÚBLICO-ALVO*\n`;
+            message += `Público principal: ${getCheckboxValues('publico')}\n`;
+            message += `Idade dos pais: ${formData.get('idade_pais') || 'Não informado'}\n`;
+            message += `Faixa etária crianças: ${formData.get('faixa_criancas') || 'Não informado'}\n`;
+            message += `Principal dor: ${getCheckboxValues('dor')}\n`;
+            message += `Linguagem: ${getCheckboxValues('linguagem')}\n`;
+            message += `Região: ${formData.get('regiao') || 'Não informado'}\n`;
+            message += `Atendimento: ${getCheckboxValues('atendimento')}\n\n`;
+            
+            message += `*3 PROPOSTA DE VALOR*\n`;
+            message += `Diferencial: ${formData.get('diferencial') || 'Não informado'}\n`;
+            message += `Métodos: ${getCheckboxValues('metodos')}\n`;
+            message += `Formação: ${formData.get('formacao') || 'Não informado'}\n`;
+            message += `Acompanhamento individual: ${getCheckboxValues('acompanhamento')}\n`;
+            message += `Relatórios: ${getCheckboxValues('relatorio')}\n`;
+            message += `Especialidades: ${getCheckboxValues('especialidades')}\n`;
+            message += `Resultados: ${formData.get('resultados') || 'Não informado'}\n\n`;
+            
+            message += `*4 SERVIÇOS E PRODUTOS*\n`;
+            message += `Serviços: ${getCheckboxValues('servicos')}\n`;
+            message += `Planos: ${formData.get('planos') || 'Não informado'}\n`;
+            message += `Valores na página: ${getCheckboxValues('valores_pagina')}\n`;
+            message += `Aula experimental: ${getCheckboxValues('aula_experimental')}\n`;
+            message += `Horários: ${formData.get('horarios') || 'Não informado'}\n`;
+            message += `Modalidade: ${getCheckboxValues('modalidade')}\n\n`;
+            
+            message += `*5 CONFIANÇA E PROVA SOCIAL*\n`;
+            message += `Depoimentos: ${formData.get('depoimentos') || 'Não informado'}\n`;
+            message += `Fotos: ${getCheckboxValues('fotos')}\n`;
+            message += `Redes sociais: ${formData.get('redes_sociais') || 'Não informado'}\n`;
+            message += `Anos de atuação: ${formData.get('anos_atuacao') || 'Não informado'}\n`;
+            message += `Certificações: ${formData.get('certificacoes') || 'Não informado'}\n`;
+            message += `Dados empresa: ${formData.get('dados_empresa') || 'Não informado'}\n\n`;
+            
+            message += `*6 IDENTIDADE VISUAL*\n`;
+            message += `Logo: ${getCheckboxValues('logo')}\n`;
+            message += `Identidade visual: ${getCheckboxValues('identidade_visual')}\n`;
+            message += `Cores: ${formData.get('cores') || 'Não informado'}\n`;
+            message += `Site atual: ${formData.get('site_atual') || 'Não informado'}\n`;
+            message += `Referências (gosta): ${formData.get('referencias_gosta') || 'Não informado'}\n`;
+            message += `Referências (não gosta): ${formData.get('referencias_nao_gosta') || 'Não informado'}\n`;
+            message += `Estilo: ${getCheckboxValues('estilo')}\n\n`;
+            
+            message += `*7 CONTEÚDO E LINGUAGEM*\n`;
+            message += `Descrição: ${formData.get('descricao_negocio') || 'Não informado'}\n`;
+            message += `Palavras-chave: ${formData.get('palavras_chave') || 'Não informado'}\n`;
+            message += `Slogan: ${formData.get('slogan') || 'Não informado'}\n`;
+            message += `Termos a evitar: ${formData.get('termos_evitar') || 'Não informado'}\n`;
+            message += `Tom: ${getCheckboxValues('tom')}\n\n`;
+            
+            message += `*8 CONVERSÃO E CONTATO*\n`;
+            message += `Canais: ${getCheckboxValues('canal_contato')}\n`;
+            message += `WhatsApp: ${formData.get('whatsapp') || 'Não informado'}\n`;
+            message += `Horário atendimento: ${formData.get('horario_atendimento') || 'Não informado'}\n`;
+            message += `Info do lead: ${getCheckboxValues('info_lead')}\n\n`;
+            
+            message += `*9 RESTRIÇÕES E PRAZOS*\n`;
+            message += `Exigências legais: ${formData.get('exigencias_legais') || 'Não informado'}\n`;
+            message += `Info obrigatória: ${formData.get('info_obrigatoria') || 'Não informado'}\n`;
+            message += `Restrições: ${formData.get('restricoes_imagem') || 'Não informado'}\n`;
+            message += `Prazo: ${formData.get('prazo') || 'Não informado'}\n`;
+            message += `Orçamento: ${formData.get('orcamento') || 'Não informado'}\n\n`;
+            
+            message += `*10 INFORMAÇÕES ADICIONAIS*\n`;
+            message += `${formData.get('info_adicional') || 'Nenhuma informação adicional'}\n`;
+            
+            return message;
+        }
+
+        // Enviar para WhatsApp
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(form);
+            const whatsappNumber = "11956649471";
+            
+            if (!whatsappNumber) {
+                alert('Por favor, preencha o número do WhatsApp!');
+                return;
+            }
+            
+            // Remover caracteres especiais do número
+            const cleanNumber = whatsappNumber.replace(/\D/g, '');
+            
+            // Formatar mensagem
+            const message = formatBriefing(formData);
+            
+            // Codificar mensagem para URL
+            const encodedMessage = encodeURIComponent(message);
+            
+            // Criar link do WhatsApp
+            const whatsappURL = `https://wa.me/5511956649471?text=${encodedMessage}`;
+            
+            // Abrir WhatsApp
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Scroll suave ao clicar nos campos
+        document.querySelectorAll('input, textarea, select').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+    </script>
+</body>
+</html>
