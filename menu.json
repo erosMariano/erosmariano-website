@@ -2,7 +2,7 @@
   "title": "Acessórios e Eletrônicos",
   "content": [
     {
-      "title": "Fabricantes",
+      "title": "Fabricantes - Teste",
       "linkList": [
         { "title": "Ver todos", "href": "/acessorios/fabricantes" },
         { "title": "Apple", "href": "/acessorios/fabricantes/apple" },
