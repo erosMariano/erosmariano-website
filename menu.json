@@ -1,0 +1,103 @@
+{
+  "title": "Acessórios e Eletrônicos",
+  "content": [
+    {
+      "title": "Fabricantes",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/fabricantes" },
+        { "title": "Apple", "href": "/acessorios/fabricantes/apple" },
+        { "title": "Samsung", "href": "/acessorios/fabricantes/samsung" },
+        { "title": "Motorola", "href": "/acessorios/fabricantes/motorola" },
+        { "title": "Xiaomi", "href": "/acessorios/fabricantes/xiaomi" },
+        { "title": "Sony", "href": "/acessorios/fabricantes/sony" },
+        { "title": "LG", "href": "/acessorios/fabricantes/lg" },
+        { "title": "Geonav", "href": "/acessorios/fabricantes/geonav" },
+        { "title": "JBL", "href": "/acessorios/fabricantes/jbl" }
+      ]
+    },
+    {
+      "title": "Smartphones",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/smartphones" },
+        { "title": "iPhone", "href": "/acessorios/smartphones/iphone" },
+        { "title": "Galaxy", "href": "/acessorios/smartphones/galaxy" },
+        { "title": "Moto G", "href": "/acessorios/smartphones/moto-g" },
+        { "title": "Redmi", "href": "/acessorios/smartphones/redmi" },
+        { "title": "Edge", "href": "/acessorios/smartphones/edge" },
+        { "title": "Pixel", "href": "/acessorios/smartphones/pixel" },
+        { "title": "Xperia", "href": "/acessorios/smartphones/xperia" },
+        { "title": "Seminovos", "href": "/acessorios/smartphones/seminovos" }
+      ]
+    },
+    {
+      "title": "Acessórios",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios" },
+        { "title": "Capas e películas", "href": "/acessorios/capas-e-peliculas" },
+        { "title": "Carregadores", "href": "/acessorios/carregadores" },
+        { "title": "Cabos e adaptadores", "href": "/acessorios/cabos-e-adaptadores" },
+        { "title": "Power banks", "href": "/acessorios/power-banks" },
+        { "title": "Suportes veiculares", "href": "/acessorios/suportes-veiculares" },
+        { "title": "Selfie sticks", "href": "/acessorios/selfie-sticks" },
+        { "title": "Casa conectada", "href": "/acessorios/casa-conectada" },
+        { "title": "Limpeza e proteção", "href": "/acessorios/limpeza-e-protecao" }
+      ]
+    },
+    {
+      "title": "Eletrônicos",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/eletronicos" },
+        { "title": "Notebooks", "href": "/acessorios/eletronicos/notebooks" },
+        { "title": "Tablets", "href": "/acessorios/eletronicos/tablets" },
+        { "title": "Projetores", "href": "/acessorios/eletronicos/projetores" },
+        { "title": "Monitores", "href": "/acessorios/eletronicos/monitores" },
+        { "title": "Teclados e mouses", "href": "/acessorios/eletronicos/teclados-e-mouses" },
+        { "title": "Webcams", "href": "/acessorios/eletronicos/webcams" },
+        { "title": "HDs e SSDs", "href": "/acessorios/eletronicos/hds-e-ssds" },
+        { "title": "Impressoras", "href": "/acessorios/eletronicos/impressoras" }
+      ]
+    },
+    {
+      "title": "Wearables",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/wearables" },
+        { "title": "Smartwatches", "href": "/acessorios/wearables/smartwatches" },
+        { "title": "Pulseiras fitness", "href": "/acessorios/wearables/pulseiras-fitness" },
+        { "title": "Apple Watch", "href": "/acessorios/wearables/apple-watch" },
+        { "title": "Galaxy Watch", "href": "/acessorios/wearables/galaxy-watch" },
+        { "title": "Óculos inteligentes", "href": "/acessorios/wearables/oculos-inteligentes" },
+        { "title": "Rastreadores GPS", "href": "/acessorios/wearables/rastreadores-gps" },
+        { "title": "Pulseiras de reposição", "href": "/acessorios/wearables/pulseiras-reposicao" },
+        { "title": "Carregadores wearables", "href": "/acessorios/wearables/carregadores" }
+      ]
+    },
+    {
+      "title": "Áudio",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/audio" },
+        { "title": "Fones de ouvido", "href": "/acessorios/audio/fones-de-ouvido" },
+        { "title": "Earbuds", "href": "/acessorios/audio/earbuds" },
+        { "title": "Caixas de som", "href": "/acessorios/audio/caixas-de-som" },
+        { "title": "Soundbars", "href": "/acessorios/audio/soundbars" },
+        { "title": "Microfones", "href": "/acessorios/audio/microfones" },
+        { "title": "Home theater", "href": "/acessorios/audio/home-theater" },
+        { "title": "Vitrolas", "href": "/acessorios/audio/vitrolas" },
+        { "title": "Amplificadores", "href": "/acessorios/audio/amplificadores" }
+      ]
+    },
+    {
+      "title": "Games",
+      "linkList": [
+        { "title": "Ver todos", "href": "/acessorios/games" },
+        { "title": "Consoles", "href": "/acessorios/games/consoles" },
+        { "title": "Controles", "href": "/acessorios/games/controles" },
+        { "title": "Headsets gamer", "href": "/acessorios/games/headsets" },
+        { "title": "Cadeiras gamer", "href": "/acessorios/games/cadeiras" },
+        { "title": "Teclados gamer", "href": "/acessorios/games/teclados" },
+        { "title": "Mouses gamer", "href": "/acessorios/games/mouses" },
+        { "title": "Jogos físicos", "href": "/acessorios/games/jogos-fisicos" },
+        { "title": "Gift cards", "href": "/acessorios/games/gift-cards" }
+      ]
+    }
+  ]
+}
