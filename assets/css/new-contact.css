@@ -1,0 +1,524 @@
+/* ==========================================================================
+   71Three — Contact (tl- prefixed to avoid conflicts)
+   --------------------------------------------------------------------------
+   Layers inside .tl-stage, back to front:
+     .tl-space    Earth video + star canvas
+     .tl-contact  the form
+     .tl-fg       cupola image + hero line (zoomed away by new-contact.js)
+     .tl-stage__veil  black cover that lifts once assets are ready
+
+   The CSS on its own describes the *resting* state (form + low Earth), which
+   is also what a visitor without JS gets. new-contact.js plays the intro on top.
+   ========================================================================== */
+
+:root {
+  --svh: 1vh;                                   /* 1% of the *small* viewport where supported */
+  --tl-gutter: clamp(20px, 3.472vw, 50px);     /* 50px on the 1440 design */
+  --tl-header-h: 145px;
+
+  --tl-c-text: #fff;
+  --tl-c-muted: #808080;
+  --tl-c-line: #383736;
+  --tl-c-cta: #ebebeb;
+
+  --tl-ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@supports (height: 100svh) {
+  :root { --svh: 1svh; }
+}
+
+/* Nothing to scroll to while the intro plays */
+html.tl-is-intro,
+html.tl-is-intro body {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+/* While scroll-back is armed (form up and blank) the page must not stretch, rubber-band or
+   pull-to-refresh under the gesture. On both elements: Chrome before 140 reads it from body. */
+html.tl-can-return,
+html.tl-can-return body { overscroll-behavior-y: none; }
+
+.tl-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+
+/* Stage
+   ========================================================================== */
+
+.tl-contact-outer-stage {
+  /* Where the Earth's limb sits, measured down from the top of the stage.
+     --limb-rest is raised by new-contact.js if the form needs more room. */
+  --limb-hero: calc(var(--svh) * 20.3);
+  --limb-rest-min: calc(var(--svh) * 73.3);
+  --limb-rest: var(--limb-rest-min);
+  --limb-gap: 30px;            /* least clearance between the button and the limb (31px in the design) */
+
+  /* earth-desktop.mp4 — everything as a fraction of the video's width */
+  --vid-w: max(130vw, calc(var(--svh) * 182));
+  --vid-ax: 0.6916;            /* limb apex, x */
+  --vid-ay: 0.12089;           /* limb apex, y */
+  --vid-sx: 78%;               /* where that apex sits across the screen */
+
+  /* The horizon is an arc of this circle (centre x, centre y, radius — fitted
+     to the footage to ~1px). The bloom is drawn along it and new-contact.js hides
+     stars behind it, so re-measure these if the footage is ever re-framed. */
+  --limb-cx: 0.6916;
+  --limb-cy: 2.40341;
+  --limb-r: 2.28251;
+
+  --hero-size: min(6.875vw, calc(var(--svh) * 12.9));   /* 99px on the 1440 design */
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+  min-height: calc(var(--svh) * 100);
+  background: #000;
+}
+
+html.tl-is-intro .tl-contact-outer-stage { height: calc(var(--svh) * 100); }
+
+/* Portrait screens: earth-mobile.mp4. Its picture is the 9:16 strip in the
+   middle third of the frame (x 646–1272 of 1920, i.e. 32.66% of its width),
+   so the frame is scaled until that strip spans the screen — with enough
+   spare that it still does at the 0.965 push-in scale the intro starts from. */
+@media (max-aspect-ratio: 4/5) {
+  .tl-contact-outer-stage {
+    --limb-hero: calc(var(--svh) * 39);
+    --limb-gap: 56px;
+
+    --vid-w: max(320vw, calc(var(--svh) * 140));
+    --vid-ax: 0.49974;         /* strip centre */
+    --vid-ay: 0.12069;         /* limb height at the strip centre */
+    --vid-sx: 50%;
+
+    --limb-cx: 0.67368;
+    --limb-cy: 2.17495;
+    --limb-r: 2.06161;
+
+    --hero-size: min(12.6vw, calc(var(--svh) * 6.3));
+  }
+}
+
+
+/* Space: Earth + stars
+   ========================================================================== */
+
+.tl-space {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.tl-earth {
+  position: absolute;
+  inset: 0;
+  will-change: transform;
+}
+
+/* The resting Earth is dimmed to 60%, as in the form frame — by a black sheet
+   over it rather than by fading .tl-earth itself. Fading a group (video + bloom)
+   makes the GPU draw it off-screen first, every frame; one flat sheet is a
+   single blend, and looks identical against the black page. */
+.tl-space__dim {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0.4;
+  will-change: opacity;
+}
+
+.tl-earth__media {
+  position: absolute;
+  left: calc(var(--vid-sx) - var(--vid-w) * var(--vid-ax));
+  top: calc(var(--limb-rest) - var(--vid-w) * var(--vid-ay));
+  width: var(--vid-w);
+  height: calc(var(--vid-w) * 0.580208);        /* 1114 / 1920 */
+  transform-origin: calc(var(--vid-ax) * 100%) calc(var(--vid-ay) / 0.580208 * 100%);
+  will-change: transform;
+}
+
+/* The footage's "black" is a faint blue (~#000104). Melt its top edge into
+   the page so there is no visible seam where the video begins. */
+.tl-earth__media::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(to bottom, #000 8%, rgba(0, 0, 0, 0));
+}
+
+.tl-earth__video {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tl-js .tl-earth__video { display: block; }
+
+/* Holds the clip's last frame for a moment so each lap dissolves instead of
+   cutting (see "Seamless loop" in new-contact.js) */
+.tl-earth__still {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+/* Atmospheric bloom: a soft band of light hugging the horizon, laid over the
+   footage (the video itself is untouched). It rides inside .tl-earth__media, so it
+   moves, scales and dims with the planet. */
+.tl-earth__bloom {
+  --r: calc(var(--vid-w) * var(--limb-r));
+  --reach: calc(var(--vid-w) * var(--bloom-reach, 1));
+  --band-top: 0.04;
+  --band-height: 0.23;
+  position: absolute;
+  top: calc(var(--vid-w) * var(--band-top));
+  left: 0;
+  width: 100%;
+  height: calc(var(--vid-w) * var(--band-height));
+  opacity: 0.8;
+  background: radial-gradient(
+    circle at calc(var(--limb-cx) * 100%) calc(var(--vid-w) * (var(--limb-cy) - var(--band-top))),
+    rgba(80, 160, 255, 0)     calc(var(--r) - var(--reach) * 0.034),
+    rgba(100, 176, 255, 0.07) calc(var(--r) - var(--reach) * 0.010),
+    rgba(165, 215, 255, 0.20) var(--r),
+    rgba(110, 182, 255, 0.10) calc(var(--r) + var(--reach) * 0.010),
+    rgba(64, 140, 255, 0.035) calc(var(--r) + var(--reach) * 0.032),
+    rgba(64, 140, 255, 0)     calc(var(--r) + var(--reach) * 0.075)
+  );
+  will-change: opacity;
+}
+
+/* The mobile clip is enlarged ~3× to fill a narrow screen, so the same glow
+   would reach a long way up a phone: pull it in. */
+@media (max-aspect-ratio: 4/5) {
+  .tl-earth__bloom {
+    --bloom-reach: 0.55;
+    --band-top: 0.065;
+    --band-height: 0.105;
+  }
+}
+
+.tl-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Foreground: cupola + hero line
+   ========================================================================== */
+
+.tl-fg {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(var(--svh) * 100);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.tl-js .tl-fg { display: block; }
+.tl-js .tl-contact-outer-stage.tl-is-done .tl-fg { display: none; }
+
+/* "Cover" the screen while pinning the round porthole to the exact centre
+   of the viewport */
+.tl-fg__cockpit {
+  --w: max(104.3vw, calc(var(--svh) * 153.7));
+  position: absolute;
+  left: calc(50% - var(--w) * 0.47957);
+  top: calc(50% - var(--w) / 1.5 * 0.51185);
+  width: var(--w);
+  height: calc(var(--w) / 1.5);
+  max-width: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* No longer shown: the headline lives with the form now (.tl-contact-title). These
+   boxes stay, invisible, only because zoomGeometry() in new-contact.js measures them */
+.tl-hero-title {
+  visibility: hidden;
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  color: var(--tl-c-text);
+  font-size: var(--hero-size);
+  font-weight: 400;
+  line-height: 1.163;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.tl-hero-title__block,
+.tl-hero-title__line { display: block; }
+
+.tl-hero-title__block { position: absolute; }
+
+.tl-hero-title__line {
+  width: -webkit-fit-content;
+  width: fit-content;
+}
+
+.tl-hero-title__line + .tl-hero-title__line { margin-left: 1.202em; }
+
+.tl-hero-title__block--a {
+  top: max(calc(var(--svh) * 19.92 + 0.05em), 96px);
+  left: max(var(--tl-gutter), env(safe-area-inset-left));
+}
+
+.tl-hero-title__block--b {
+  top: calc(var(--svh) * 56.05 + 0.05em);
+  left: 59.79vw;
+}
+
+/* Portrait */
+@media (max-aspect-ratio: 4/5) {
+  .tl-fg__cockpit {
+    --h: calc(var(--svh) * 102.5);
+    left: calc(50% - var(--h) * 0.4);
+    top: calc(50% - var(--h) * 0.51185);
+    width: calc(var(--h) * 0.8);
+    height: var(--h);
+  }
+
+  .tl-hero-title__block--a {
+    top: calc(var(--svh) * 30.6 - 2.326em);
+  }
+
+  .tl-hero-title__block--b {
+    top: calc(var(--svh) * 70.4);
+    left: auto;
+    right: max(var(--tl-gutter), env(safe-area-inset-right));
+  }
+}
+
+/* "Scroll to continue" */
+.tl-scroll-cue {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: max(34px, calc(env(safe-area-inset-bottom) + 22px));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.45), 0 0 14px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s linear;
+  will-change: opacity;
+}
+
+.tl-scroll-cue.tl-is-on {
+  opacity: 1;
+  transition: opacity 0.9s var(--tl-ease-out) 0.3s;
+}
+
+.tl-scroll-cue__chevron {
+  display: block;
+  animation: tl-scroll-cue-float 2.6s ease-in-out infinite paused;
+  will-change: transform, opacity;
+}
+
+.tl-scroll-cue.tl-is-on .tl-scroll-cue__chevron { animation-play-state: running; }
+
+@keyframes tl-scroll-cue-float {
+  0%, 100% { transform: translate3d(0, -1px, 0); opacity: 0.5; }
+  50%      { transform: translate3d(0, 4px, 0);  opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-scroll-cue__chevron { animation: none; }
+}
+
+.tl-stage__veil {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  background: #000;
+  pointer-events: none;
+}
+
+.tl-js .tl-stage__veil { display: block; }
+.tl-js .tl-contact-outer-stage.tl-is-ready .tl-stage__veil { display: none; }
+
+
+/* Contact form
+   ========================================================================== */
+
+.tl-contact-inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(var(--svh) * 100);
+  padding: var(--tl-header-h) 24px 24px;
+}
+
+.tl-contact-inner::after {
+  content: "";
+  flex: 1 1 0;
+  max-height: calc(var(--tl-header-h) - 24px);
+}
+
+/* Extra scroll room for the Earth on very short screens (set by new-contact.js) */
+.tl-stage__tail { height: var(--stage-tail, 0px); }
+
+.tl-contact-form {
+  --form-gap: clamp(28px, calc(var(--svh) * 4.9), 50px);
+  --field-pad: clamp(12px, calc(var(--svh) * 1.95), 20px);
+
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--form-gap);
+  width: min(410px, 100%);
+}
+
+.tl-contact-title {
+  position: relative;
+  top: 0.08em;
+  margin: 0;
+  color: var(--tl-c-text);
+  font-size: min(24px, 7vw);
+  font-weight: 400;
+  line-height: 1.163;
+  letter-spacing: -0.016em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* The fields are painted, and on their own layers, from the very first frame */
+.tl-js .tl-contact-form > * { will-change: opacity, transform; }
+
+.tl-field {
+  display: block;
+  width: 100%;
+}
+
+.tl-field__input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 calc(var(--field-pad) - 1px);
+  border: 0;
+  border-bottom: 1px solid var(--tl-c-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--tl-c-text);
+  font: inherit;
+  font-size: 15px;
+  line-height: 19px;
+  caret-color: #fff;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.35s var(--tl-ease-out);
+}
+
+.tl-field__input::placeholder {
+  color: var(--tl-c-muted);
+  opacity: 1;
+}
+
+.tl-field__input:hover { border-bottom-color: #5a5958; }
+
+.tl-field__input:focus {
+  outline: none;
+  border-bottom-color: #fff;
+}
+
+.tl-field__input--area {
+  height: calc(19px + var(--field-pad));
+  max-height: 134px;
+  overflow: hidden;
+  resize: none;
+}
+
+/* Keep browser autofill from painting the field white */
+.tl-field__input:-webkit-autofill,
+.tl-field__input:-webkit-autofill:hover,
+.tl-field__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fff;
+  box-shadow: 0 0 0 100px #000 inset;
+  transition: background-color 99999s;
+}
+
+/* Legacy CTA styles removed - submit button uses .tl-section-btn button from common.css */
+
+
+/* Responsive
+   ========================================================================== */
+
+@media (max-width: 820px) {
+  :root { --tl-header-h: 100px; }
+
+  html:not(.tl-js) .tl-contact-inner { padding-top: 150px; }
+  html:not(.tl-js) .tl-contact-outer-stage { --limb-rest-min: calc(var(--svh) * 84); }
+}
+
+/* Very short screens */
+@media (max-height: 500px) and (min-width: 821px) {
+  :root { --tl-header-h: 84px; }
+}
+
+@media (max-height: 500px) and (min-aspect-ratio: 4/5) {
+  .tl-hero-title__block--a { top: calc(var(--tl-header-h) - 8px); }
+}
+
+/* iOS zooms the page when a focused field's text is under 16px */
+@media (max-width: 820px), (pointer: coarse) {
+  .tl-field__input {
+    padding-top: 10px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .tl-field__input--area { height: calc(30px + var(--field-pad)); }
+
+  .tl-contact-form { --form-gap: clamp(20px, calc(var(--svh) * 3.6), 40px); }
+}
+
+@media (max-width: 820px) and (min-width: 380px), (pointer: coarse) and (min-width: 380px) {
+  .tl-field__input { font-size: 17px; }
+}
